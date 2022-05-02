@@ -1,0 +1,451 @@
+<!doctype html>
+<html>
+<head>
+<title>
+E-Ticket Pass
+</title>
+
+<link rel="stylesheet" href="mystyle.css">
+
+<style type="text/css">
+
+body
+{
+background-image: url('e-pass.jpg');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+background-position: center;
+width: 100%;
+}
+
+.form_heading
+{
+padding: 25px;
+text-align: center;
+letter-spacing: 5px;
+background-color: darkgreen;
+}
+
+.form_heading *
+{
+vertical-align: middle;
+}
+
+.border
+{
+width: 740px;
+display: flex;
+border-style: dotted solid;
+border-bottom: none;
+border-width: 10px 8px;
+border-color: navy;
+background-color: darkgreen;
+text-align: left;
+}
+
+.form_border
+{
+padding: 0px;
+margin: 0px;
+display: inline;
+border-style: dotted solid;
+border-top: none;
+border-width: 10px 8px;
+border-color: navy;
+background-color: rgba(255,255,255,0.8);
+text-align: left;
+}
+
+.field_heading
+{
+width : 190px;
+display: inline-block;
+color: darkgreen;
+text-shadow: 2px 2px 10px yellow;
+font-size: 22px;
+font-family: fantasy;
+margin-left: 6px;
+text-align: center;
+}
+
+.field
+{
+width: 500px;
+padding: 8px 8px;
+margin: 8px 20px;
+border-style: solid;
+border-width: 4px 4px;
+border-radius: 15px;
+border-color: navy;
+box-sizing: border-box;
+color: navy;
+background-color: aquamarine;
+font-weight: 900;
+font-size: 18px;
+}
+
+.field::placeholder
+{
+color: navy;
+font-weight: bold;
+}
+
+input:focus
+{
+background-color: yellow;
+}
+
+input:focus::placeholder
+{
+color: transparent;
+}
+
+.select_choice
+{
+width: 500px;
+padding: 8px 8px;
+margin: 8px 20px;
+color: navy;
+background-color: aquamarine;
+border-style: solid;
+border-width: 4px 4px;
+border-radius: 15px;
+border-color: navy;
+font-weight: bold;
+font-size: 18px;
+}
+
+.select_choice::placeholder
+{
+color: navy;
+font-weight: bold;
+}
+
+.select_choice:focus
+{
+background-color: yellow;
+}
+
+#gender_heading
+{
+width : 190px;
+display: inline-block;
+margin-left: 6px;
+margin-right: 22px;
+text-align: center;
+color: darkgreen;
+text-shadow: 2px 2px 10px yellow;
+font-size: 22px;
+font-family: fantasy;
+}
+
+.gender_type
+{
+width: 90px;
+margin: 0px 25px 0px 0px;
+text-align: left;
+color: navy;
+font-weight: bold;
+font-size: 20px;
+}
+
+
+#submit_button
+{
+width: 200px;
+padding: 0px 0px 0px 20px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: darkblue;
+background-image: linear-gradient(-90deg,crimson,yellow);
+border-style: solid;
+border-width: 3px;
+border-radius: 48% 0px 0px 48%;
+border-color: navy;
+box-shadow: inset 0 0 0 0 azure;
+transition: ease-out 0.3s;
+font-weight: 900;
+font-size: 22px;
+font-family: arial;
+}
+
+#submit_button:hover
+{
+cursor: pointer;
+border-width: 4px;
+border-radius: 48% 0px 0px 48%;
+border-color: red;
+box-shadow: inset -300px 0 0 0 azure;
+}
+
+#reset_button
+{
+width: 200px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: darkblue;
+background-color: yellow;
+border-style: solid;
+border-width: 3px;
+border-radius: 0px;
+border-color: navy;
+box-shadow: inset 0 0 0 0 azure;
+transition: ease-out 0.3s;
+font-weight: 900;
+font-size: 22px;
+font-family: arial;
+}
+
+#reset_button:hover
+{
+cursor: pointer;
+border-width: 4px;
+border-radius: 0px;
+border-color: red;
+box-shadow: inset 0 300px 0 0 azure;
+}
+
+#cancel_button
+{
+width: 200px;
+padding: 0px 20px 0px 0px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: darkblue;
+background-image: linear-gradient(-90deg,yellow,crimson);
+border-style: solid;
+border-width: 3px;
+border-radius: 0% 48% 48% 0%;
+border-color: navy;
+box-shadow: inset 0 0 0 0 azure;
+transition: ease-out 0.3s;
+font-weight: 900;
+font-size: 22px;
+font-family: arial;
+}
+
+#cancel_button:hover
+{
+cursor: pointer;
+border-width: 4px;
+border-radius: 0% 48% 48% 0%;
+border-color: red;
+box-shadow: inset 300px 0 0 0 azure;
+}
+
+.icon
+{
+position: relative;
+width: 200px; 
+height: 200px; 
+padding: 30px; 
+margin: 0px; 
+border-style: dashed solid; 
+border-width: 10px 5px;
+border-radius: 50%;
+border-color: red;
+box-shadow: 0px 25px 25px 10px black;
+background-color: rgba(255,255,255,0.8);
+}
+
+</style>
+
+<script type="text/javascript">
+function form_validation()
+{
+var valid=true;
+var name=document.eform.uname.value;
+var source=document.eform.source.value;
+var destination=document.eform.destination.value;
+var seat=document.eform.seat.value;
+var category=document.eform.category.value;
+var vaccine_status=document.eform.vaccine.value;
+var email_id=document.eform.uemail.value;
+var a_position=email_id.indexOf("@");
+var dot_position=email_id.lastIndexOf(".");
+var male=document.eform.gender[0].checked;
+var female=document.eform.gender[1].checked;
+var other=document.eform.gender[2].checked;
+if (name=="")
+{
+alert("Please enter your Name!");
+valid=false;
+}
+if (source=="")
+{
+alert("Please enter Source station!");
+valid=false;
+}
+if (destination=="")
+{
+alert("Please enter Destination station!");
+valid=false;
+}
+if (seat=="Seat")
+{
+alert("Please select Seat type!");
+valid=false;
+}
+if (category=="Category")
+{
+alert("Please select your Category!");
+valid=false;
+}
+if (vaccine_status=="Vaccine")
+{
+alert("Please select your Vaccination Status!");
+valid=false;
+}
+if (email_id=="")
+{
+alert("Please enter your Email-Id!");
+email_success=0;
+valid=false;
+}
+else if ((a_position==-1) || (dot_position==-1))
+{
+alert("Please enter a valid Email-Id!");
+email_success=0;
+valid=false;
+}
+else if ((a_position < 1) || ((dot_position-a_position)<2))
+{
+alert("Please enter a valid Email-Id!");
+email_success=0;
+valid=false;
+}
+if (male==false && female==false && other==false)
+{
+alert("Please choose your Gender! ( Male or Female or Other )");
+gender_success=0;
+valid=false;
+}
+return valid;
+}
+</script>
+
+</head>
+<body>
+
+<nav>
+<div class="navbar">
+<div class="dropdown">
+<button class="menubutton"><ion-icon class="menu-icon" name="menu-outline"></ion-icon>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script></button>
+<div class="dropdown-content">
+<a href="Booking.html">Book Ticket</a>
+<a style="border: 5px solid dodgerblue; background-color: lightyellow;" href="E-Pass.html">E-Pass</a>
+<a href="#">History</a>
+</div>
+</div>
+<label class="logo">Mumbai Railways</label>
+<ul>
+<li><label class="tab"><a href="index.php">HOME</a></li></label>
+<li><label class="tab"><a href="Registration.html">REGISTER</a></li></label>
+<li><label class="tab"><a href="login.php">LOGIN</a></li></label>
+<li><label class="tab"><a href="Contact.html">CONTACT</a></li></label>
+</ul>
+</div>
+</nav>
+
+<br>
+<br>
+<div align="center">
+<form action="epass_db.php" method="post" name="eform" autocomplete="on" onsubmit="return form_validation();" novalidate>
+<fieldset class="border">
+<legend align="middle"><img class="icon" src="Ticket-pass.png"></legend>
+</fieldset>
+<fieldset class="form_border">
+<div class="form_heading">
+<label style="width: 500px; color: white; font-size: 50px; font-variant: small-caps; font-family: Arial;"><b>E-TICKET PASS</b></label>
+</div>
+<br>
+<br>
+<label class="field_heading">Name</label>
+	<input type="text" class="field" name="uname" placeholder="Enter your Name!">
+<br>
+<br>
+<label class="field_heading">From</label>
+	<input type="text" class="field" name="source" placeholder="Enter your Source name!">
+<br>
+<br>
+<label class="field_heading">To</label>
+	<input type="text" class="field" name="destination" placeholder="Enter your Destination name!">
+<br>
+<br>
+<label class="field_heading">Seat Type</label>
+<select class="select_choice" name="seat">
+	<option value="Seat">Seat Type</option>
+	<option value="First Class (FC)">First Class (FC)</option>
+	<option value="Second Class (SL)">Second Class (SL)</option>
+</select>
+<br>
+<br>
+<label class="field_heading">Category</label>
+<select class="select_choice" name="category">
+	<option value="Category">Category</option>
+	<option value="General">General</option>
+	<option value="Ladies">Ladies</option>
+	<option value="Physically Handicapped">Physically Handicapped</option>
+</select>
+<br>
+<br>
+<label class="field_heading">Vaccination Status</label>
+<select class="select_choice" name="vaccine">
+	<option value="Vaccine">Vaccination Status</option>
+	<option value="Not Vaccinated">Not Vaccinated</option>
+	<option value="Partially Vaccinated (Single-Dose)">Partially Vaccinated (Single-Dose)</option>
+	<option value="Fully Vaccinated (Double-Dose)">Fully Vaccinated (Double-Dose)</option>
+</select>
+<br>
+<br>
+<label class="field_heading">E-mail ID</label>
+	<input type="text" class="field" name="uemail" placeholder="Enter your Email-Id!">
+<br>
+<br>
+<label id="gender_heading">Gender</label>
+	<input type="radio" name="gender" value="Male" id="male">
+	<label class="gender_type" for="male">&nbsp;Male</label>
+
+	<input type="radio" name="gender" value="Female" id="female">
+	<label class="gender_type" for="female">&nbsp;Female</label>
+
+	<input type="radio" name="gender" value="Other" id="other">
+	<label class="gender_type" for="other">&nbsp;Other</label>
+<br>
+<br>
+<br>
+<br>
+<div class="container" align="center">
+	<input id="submit_button" type="submit" name="submit" value="Submit">
+	<input id="reset_button" type="reset" name="reset" onclick="epass_reset();" value="Reset">
+<script type="text/javascript">
+function epass_reset()
+{
+document.eform.uname.value="";
+document.eform.source.value="";
+document.eform.destination.value="";
+document.eform.seat.value="";
+document.eform.category.value="";
+document.eform.vaccine.value="";
+document.eform.uemail.value="";
+document.eform.gender[0].checked=false;
+document.eform.gender[1].checked=false;
+document.eform.gender[2].checked=false;
+document.eform.uname.focus();
+}
+</script>
+	<button id="cancel_button"><a type="button" href="index.html">Cancel</a></button>
+<br>
+<br>
+<br>
+</div>
+</fieldset>
+</form>
+</div>
+<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!doctype html>
+<html>
+<head>
+<title>
+Booking Form
+</title>
+
+<link rel="stylesheet" href="mystyle.css">
+
+<style type="text/css">
+body
+{
+background-image: url('Ticket.jfif');
+background-repeat: no-repeat;
+background-attachment: scroll;
+background-size: cover;
+background-position: center;
+}
+
+.form_heading
+{
+color: black;
+background-color: crimson;
+
+padding: 6px;
+}
+
+.form_heading *
+{
+vertical-align: middle;
+}
+
+.form_border
+{
+padding: 0px;
+margin: 0px;
+display: inline;
+border-style: dashed solid;
+border-width: 10px 5px;
+border-radius: 20px;
+border-color: navy;
+box-shadow: -5px 10px 30px 10px white;
+background-color: rgba(255,255,255,0.6);
+text-align: left;
+}
+
+.field_heading
+{
+width : 300px;
+display: inline-block;
+color: darkgreen;
+text-shadow: 2px 2px 10px yellow;
+font-size: 22px;
+font-family: fantasy;
+margin-left: 6px;
+text-align: center;
+}
+
+.field
+{
+width: 420px;
+padding: 8px 8px;
+margin: 8px 40px;
+border-style: solid;
+border-width: 4px 4px;
+border-radius: 15px;
+border-color: navy;
+box-sizing: border-box;
+color: navy;
+background-color: aquamarine;
+font-weight: 900;
+font-size: 18px;
+}
+
+.field::placeholder
+{
+color: navy;
+font-weight: bold;
+}
+
+input:focus
+{
+background-color: yellow;
+}
+
+input:focus::placeholder
+{
+color: transparent;
+}
+
+.select_choice
+{
+width: 420px;
+height: 48px;
+padding: 4px 4px;
+margin: 8px 10px 8px 40px;
+color: navy;
+background-color: aquamarine;
+border-style: solid;
+border-width: 4px 4px;
+border-radius: 15px;
+border-color: navy;
+font-weight: bold;
+font-size: 18px;
+}
+
+.select_choice::placeholder
+{
+color: navy;
+font-weight: bold;
+}
+
+.select_choice:focus
+{
+background-color: yellow;
+}
+
+#submit_button
+{
+width: 200px;
+padding: 0px 0px 0px 20px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: darkblue;
+background-image: linear-gradient(-90deg,crimson,yellow);
+border-style: solid;
+border-width: 3px;
+border-radius: 48% 0px 0px 48%;
+border-color: navy;
+box-shadow: inset 0 0 0 0 azure;
+transition: ease-out 0.3s;
+font-weight: 900;
+font-size: 22px;
+font-family: arial;
+}
+
+#submit_button:hover
+{
+cursor: pointer;
+border-width: 4px;
+border-radius: 48% 0px 0px 48%;
+border-color: red;
+box-shadow: inset -300px 0 0 0 azure;
+}
+
+#reset_button
+{
+width: 200px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: darkblue;
+background-color: yellow;
+border-style: solid;
+border-width: 3px;
+border-radius: 0px;
+border-color: navy;
+box-shadow: inset 0 0 0 0 azure;
+transition: ease-out 0.3s;
+font-weight: 900;
+font-size: 22px;
+font-family: arial;
+}
+
+#reset_button:hover
+{
+cursor: pointer;
+border-width: 4px;
+border-radius: 0px;
+border-color: red;
+box-shadow: inset 0 300px 0 0 azure;
+}
+
+#cancel_button
+{
+width: 200px;
+padding: 0px 20px 0px 0px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: darkblue;
+background-image: linear-gradient(-90deg,yellow,crimson);
+border-style: solid;
+border-width: 3px;
+border-radius: 0% 48% 48% 0%;
+border-color: navy;
+box-shadow: inset 0 0 0 0 azure;
+transition: ease-out 0.3s;
+font-weight: 900;
+font-size: 22px;
+font-family: arial;
+}
+
+#cancel_button:hover
+{
+cursor: pointer;
+border-width: 4px;
+border-radius: 0% 48% 48% 0%;
+border-color: red;
+box-shadow: inset 300px 0 0 0 azure;
+}
+
+.icon
+{
+position: relative;
+width: 240px;
+height: 120px;
+padding: 30px;
+margin: 0px;
+border-style: dashed solid;
+border-bottom: none;
+border-width: 10px 5px;
+border-radius: 150px 150px 0px 0px;
+border-color: red;
+box-shadow: -5px 20px 30px 10px black;
+background-color: rgba(255,255,255,0.8);
+}
+
+</style>
+
+<script type="text/javascript">
+function form_validation()
+{
+var valid=true;
+var source=document.bform.source.value;
+var destination=document.bform.destination.value;
+var date=document.bform.date.value;
+var aadhaar_no=document.bform.acn.value;
+var seat=document.bform.seat.value;
+var ticket=document.bform.ticket.value;
+var category=document.bform.category.value;
+var vaccine_status=document.bform.vaccine.value;
+var no_tickets=document.bform.tn.value;
+if (source=="")
+{
+alert("Please enter Source station!");
+valid=false;
+}
+if (destination=="")
+{
+alert("Please enter Destination station!");
+valid=false;
+}
+if (date=="")
+{
+alert("Please enter Date to book the ticket!");
+valid=false;
+}
+if (aadhaar_no=="")
+{
+alert("Please enter your Aadhaar Card Number!");
+valid=false;
+}
+else if (isNaN(aadhaar_no))
+{
+alert("Characters are not allowed!\nPlease enter a valid Aadhaar Card Number!\nAadhaar Card Number must contain 16 numbers in it.");
+valid=false;
+}
+else if (aadhaar_no.length<12 || aadhaar_no.length>12)
+{
+alert("Please enter a valid Aadhaar Card Number!\nAadhaar Card Number must contain 12 numbers in it.");
+valid=false;
+}
+if (seat=="Seat")
+{
+alert("Please select Seat type!");
+valid=false;
+}
+if (ticket=="Ticket")
+{
+alert("Please select Ticket type!");
+valid=false;
+}
+if (category=="Category")
+{
+alert("Please select your Category!");
+valid=false;
+}
+if (vaccine_status=="Vaccine")
+{
+alert("Please select your Vaccination Status!");
+valid=false;
+}
+if (no_tickets=="")
+{
+alert("Please enter the number of tickets to get booked!"+"\n"+"Minimum = 1"+"\n"+"Maximum=10");
+valid=false;
+}
+return valid;
+}
+</script>
+
+</head>
+<body>
+
+<nav>
+<div class="navbar">
+<div class="dropdown">
+<button class="menubutton"><ion-icon class="menu-icon" name="menu-outline"></ion-icon>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script></button>
+<div class="dropdown-content">
+<a style="border: 5px solid dodgerblue; background-color: lightyellow;" href="Booking.html">Book Ticket</a>
+<a href="E-Pass.html">E-Pass</a>
+<a href="#">History</a>
+</div>
+</div>
+<label class="logo">Mumbai Railways</label>
+<ul>
+<li><label class="tab"><a href="index.php">HOME</a></li></label>
+<li><label class="tab"><a href="Registration.html">REGISTER</a></li></label>
+<li><label class="tab"><a href="login.php">LOGIN</a></li></label>
+<li><label class="tab"><a href="Contact.html">CONTACT</a></li></label>
+</ul>
+</div>
+</nav>
+
+<br>
+<br>
+<div align="center">
+<ion-icon class="icon" name="train-sharp"></ion-icon>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<form action="booking_ticket_db.php" method="post" name="bform" autocomplete="on" onsubmit="return form_validation();" novalidate>
+<fieldset class="form_border">
+<div class="form_heading">
+<img style="padding: 0px 10px 0px 10px; width: 150px; margin: 0px 100px 0px 0px; height: 120px; background-color: white;" src="Ticket-Icon.jpg">
+<label style="width: 400px; color: white;  text-align: center; font-size: 60px; font-variant: small-caps; font-family: Arial;"><b>Book Ticket</b></label>
+</div>
+<br>
+<br>
+<label class="field_heading">FROM</label>
+	<input type="text" class="field" name="source" placeholder="Enter your Source name!">
+<br>
+<br>
+<label class="field_heading">TO</label>
+	<input type="text" class="field" name="destination" placeholder="Enter your Destination name!">
+<br>
+<br>
+<label class="field_heading">DATE</label>
+	<input type="date" class="field" name="date">
+<br>
+<br>
+<label class="field_heading">AADHAAR CARD NUMBER</label>
+	<input type="text" class="field" name="acn" placeholder="Enter your Aadhaar Card Number!">
+<br>
+<br>
+<label class="field_heading">SEAT TYPE</label>
+<select class="select_choice" name="seat">
+	<option value="Seat">Seat Type</option>
+	<option value="First Class (FC)">First Class (FC)</option>
+	<option value="Second Class (SL)">Second Class (SL)</option>
+</select>
+<br>
+<br>
+<label class="field_heading">TICKET TYPE</label>
+<select class="select_choice" name="ticket">
+	<option value="Ticket">Ticket Type</option>
+	<option value="Single (one-way)">Single (one-way)</option>
+	<option value="Return">Return</option>
+</select>
+<br>
+<br>
+<label class="field_heading">CATEGORY</label>
+<select class="select_choice" name="category">
+	<option value="Category">Category</option>
+	<option value="General">General</option>
+	<option value="Ladies">Ladies</option>
+	<option value="Physically Handicapped">Physically Handicapped</option>
+	</optgroup>
+</select>
+<br>
+<br>
+<label class="field_heading">VACCINATION STATUS</label>
+<select class="select_choice" name="vaccine">
+	<option value="Vaccine">Vaccination Status</option>
+	<option value="Not Vaccinated">Not Vaccinated</option>
+	<option value="Partially Vaccinated (Single-Dose)">Partially Vaccinated (Single-Dose)</option>
+	<option value="Fully Vaccinated (Double-Dose)">Fully Vaccinated (Double-Dose)</option>
+</select>
+<br>
+<br>
+<label class="field_heading">TOTAL NUMBER OF TICKETS</label>
+	<input type="number" class="field" name="tn" placeholder="How many People?" min="1" max="10">
+<br>
+<br>
+<br>
+<br>
+<div class="container" align="center">
+	<input id="submit_button" type="submit" name="submit" value="Book">
+	<input id="reset_button" type="reset" name="reset" onclick="booking_reset();" value="Reset">
+<script type="text/javascript">
+function booking_reset()
+{
+document.bform.source.value="";
+document.bform.destination.value="";
+document.bform.date.value="";
+document.bform.acn.value="";
+document.bform.seat.value="";
+document.bform.ticket.value="";
+document.bform.category.value="";
+document.bform.vaccine.value="";
+document.bform.tn.value="";
+document.bform.source.focus();
+}
+</script>
+	<button id="cancel_button"><a type="button" href="index.html">Cancel</a></button>
+<br>
+<br>
+<br>
+</fieldset>
+</form>
+</div>
+<br>
+<br>
+</body>
+</html>
